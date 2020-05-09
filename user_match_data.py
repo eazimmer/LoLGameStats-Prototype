@@ -1,6 +1,8 @@
 # Imports
 from riotwatcher import LolWatcher, ApiError
 import json
+from pprint import pprint
+import sheets_test
 
 # Global Variables
 api_key = "RGAPI-f46f08bc-505d-4817-b3ae-1bee84b8cf33"
@@ -163,7 +165,8 @@ def main():
         champlist = watcher.data_dragon.champions(version)["data"]  # Get champion data
 
         statistics = get_stats(match_data, player_data, champlist) # Produce statistics from the game
-        print(statistics)
-
+        #statistics = json.dumps(statistics)
+        ##pprint(statistics)
+        sheets_test.printGameToSheet(statistics)
 
 main()
