@@ -4,7 +4,7 @@ import json
 import sheets
 
 # Global Variables
-api_key = "RGAPI-a70e7192-dfeb-4122-a27c-26a5266790be"
+api_key = "RGAPI-aa3716eb-6851-4a62-9ca7-f49d3f5dfdba"
 watcher = LolWatcher(api_key)
 region = "na1"
 
@@ -133,10 +133,6 @@ def get_match_data(account_id, user):
                     output = json.dumps(participant, indent=4)
                     return json.dumps(match_data), json.dumps(output)
 
-                    # Output result to a file
-                    # with open('out.txt', 'w') as outfile:
-                        # json.dump(participant, outfile, indent=4)
-
 
 def get_champ_from_id(champlist, id):
 
@@ -165,9 +161,8 @@ def main():
 
         statistics = get_stats(match_data, player_data, champlist) # Produce statistics from the game
 
-        # {'players': [{'player': 'Search for more', 'side': 'blue', 'win': True, 'champion': 'Senna', 'kills': 9, 'deaths': 8, 'assists': 13, 'kda': 2.75, 'creepscore': 180, 'creepspermin': 4.6, 'gold': 13518, 'goldpermin': 346.6, 'killparticipationpercent': 0.61, 'teamgoldpercent': 0.2},
-        # {'player': 'Akita Kiruma', 'side': 'blue', 'win': True, 'champion': 'Lulu', 'kills': 2, 'deaths': 6, 'assists': 20, 'kda': 3.67, 'creepscore': 31, 'creepspermin': 0.8, 'gold': 9598, 'goldpermin': 246.1, 'killparticipationpercent': 0.61, 'teamgoldpercent': 0.14},
+        # Call sheets API to output data
+        sheets.sheets_main(statistics)
 
-        sheets.printGameToSheet(statistics)
 
 main()
