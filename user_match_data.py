@@ -1,11 +1,10 @@
 # Imports
 from riotwatcher import LolWatcher, ApiError
 import json
-from pprint import pprint
-import sheets_test
+import sheets
 
 # Global Variables
-api_key = "RGAPI-f46f08bc-505d-4817-b3ae-1bee84b8cf33"
+api_key = "RGAPI-a70e7192-dfeb-4122-a27c-26a5266790be"
 watcher = LolWatcher(api_key)
 region = "na1"
 
@@ -151,7 +150,7 @@ def get_champ_from_id(champlist, id):
 
 
 def main():
-    user = input("Please enter a summoner name: ") # Get target summoner's username
+    user = input("Please enter a (CASE SENSITIVE) summoner name: ") # Get target summoner's username
 
     try:
         account_id = watcher.summoner.by_name(region, user)["accountId"]  # Get account_id of target user via their summoner name
@@ -165,8 +164,10 @@ def main():
         champlist = watcher.data_dragon.champions(version)["data"]  # Get champion data
 
         statistics = get_stats(match_data, player_data, champlist) # Produce statistics from the game
-        #statistics = json.dumps(statistics)
-        ##pprint(statistics)
-        sheets_test.printGameToSheet(statistics)
+
+        # {'players': [{'player': 'Search for more', 'side': 'blue', 'win': True, 'champion': 'Senna', 'kills': 9, 'deaths': 8, 'assists': 13, 'kda': 2.75, 'creepscore': 180, 'creepspermin': 4.6, 'gold': 13518, 'goldpermin': 346.6, 'killparticipationpercent': 0.61, 'teamgoldpercent': 0.2},
+        # {'player': 'Akita Kiruma', 'side': 'blue', 'win': True, 'champion': 'Lulu', 'kills': 2, 'deaths': 6, 'assists': 20, 'kda': 3.67, 'creepscore': 31, 'creepspermin': 0.8, 'gold': 9598, 'goldpermin': 246.1, 'killparticipationpercent': 0.61, 'teamgoldpercent': 0.14},
+
+        sheets.printGameToSheet(statistics)
 
 main()
