@@ -15,4 +15,5 @@ A Python program designed to export LoL match details into an Excel spreadsheet.
  -- pip install riotwatcher
  
  
- You should now be able to run main.py and see the target spreadsheet update.
+The program should now be runnable. Open a console window, navigate to the program's directory, and execute the following to run the program:
+-- python main.py
