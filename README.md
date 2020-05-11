@@ -15,4 +15,4 @@ A Python program designed to export LoL match details into an Excel spreadsheet.
  -- pip install riotwatcher
  
  
- You should now be able to run user_match_data.py and see the target spreadsheet update.
+ You should now be able to run main.py and see the target spreadsheet update.
