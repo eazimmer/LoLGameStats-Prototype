@@ -149,12 +149,13 @@ def main():
     user = input("Please enter a (CASE SENSITIVE) summoner name: ") # Get target summoner's username
 
     try:
-        account_id = watcher.summoner.by_name(region, user)["accountId"]  # Get account_id of target user via their summoner name
+        account = watcher.summoner.by_name(region, user)  # Get account_id of target user via their summoner name
     except ApiError as err:
         if err.response.status_code == 404:
             print('Summoner with that name not found.')
     else:
-        # API Calls to collect data
+        account_id = account["accountId"]
+        user = account["name"]
         match_data, player_data = get_match_data(account_id, user) # Get match data
         version = watcher.data_dragon.versions_for_region(region)["v"]  # Get game version
         champlist = watcher.data_dragon.champions(version)["data"]  # Get champion data
@@ -163,6 +164,5 @@ def main():
 
         # Call sheets API to output data
         sheets.sheets_main(statistics)
-
 
 main()
