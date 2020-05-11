@@ -2,6 +2,7 @@
 A Python program designed to export LoL match details into an Excel spreadsheet.
  
  Dependencies:
+ 
  Python will need to be installed on your system in order for the program to run. We recommend downloading Python 3.7.7 from here: https://www.python.org/downloads/
  
  In order to run the program, you will need to install the following packages. To accomplish this, we recommend installing pip: https://pip.pypa.io/en/stable/installing/
