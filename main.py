@@ -154,6 +154,7 @@ def main():
         if err.response.status_code == 404:
             print('Summoner with that name not found.')
     else:
+        print("Exporting data, please wait:")
         account_id = account["accountId"]
         user = account["name"]
         match_data, player_data = get_match_data(account_id, user) # Get match data
@@ -164,5 +165,7 @@ def main():
 
         # Call sheets API to output data
         sheets.sheets_main(statistics)
+        print("Process complete.")
+
 
 main()
