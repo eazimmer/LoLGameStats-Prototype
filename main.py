@@ -4,7 +4,7 @@ import json
 import sheets
 
 # Global Variables
-api_key = "RGAPI-aa3716eb-6851-4a62-9ca7-f49d3f5dfdba"
+api_key = "RGAPI-3ace2577-8184-460e-8171-7f4f4b113003"
 watcher = LolWatcher(api_key)
 region = "na1"
 
